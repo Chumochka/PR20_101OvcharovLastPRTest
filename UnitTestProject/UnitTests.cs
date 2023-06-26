@@ -13,8 +13,8 @@ namespace UnitTestProject
             var actual = AutoThemeChanger.SunDate.Days_since_2000_Jan_0(2023, 06, 26);
             Assert.AreEqual(expected, actual);
         }
-        //следующие функции возвращают корректные значения тригонометрических функций
-        //Почему то стандартные функцим рассчитывают некорректно
+        //следующие функции возвращают значения тригонометрических функций от угла в градусах
+        //стандартные функцим рассчитывают через радианы
         [TestMethod]
         public void Sind_Test()
         {
@@ -41,6 +41,14 @@ namespace UnitTestProject
         {
             var expected = 60;
             var actual = Math.Round(AutoThemeChanger.SunDate.Acosd(0.5), 4);
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void Atandd_Test()
+        {
+            
+            var expected = 45;
+            var actual = Math.Round(AutoThemeChanger.SunDate.Atan2d(AutoThemeChanger.SunDate.Sind(45), AutoThemeChanger.SunDate.Cosd(45)), 4);
             Assert.AreEqual(expected, actual);
         }
     }
